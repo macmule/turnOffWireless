@@ -131,6 +131,7 @@ if [[ "$airportPower" == "Off" ]]; then
 else
 	#Checks to see if Wireless is on
 	echo "Wireless is powered on..."
+	
 	# If machine is running 10.4, clear search domains if specified for $clearTiger variable
 	if [[ "$OS" &lt; "10.5" ]]; then
 		if [[ "$clearTiger" == "y" ]]; then
@@ -155,39 +156,38 @@ else
 		echo "Clearing search domains for OS $OS..."
 		/usr/sbin/networksetup -setsearchdomains "$checkWireless" "empty"
 
-fi
+	fi
 
-if [[ "$OS" == "10.4" ]]; then
-
-	# If OS is 10.4.x run the following to turn off Wireless...
-	echo "Turning off the Wireless for OS $OS..."
-	/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Support/networksetup -setairportpower off
-	exit 0
+	if [[ "$OS" == "10.4" ]]; then
 	
-	elif [[ "$OS" == "10.5" ]]; then
-	
-		# If OS is 10.5.x run the following to turn off Wireless...
+		# If OS is 10.4.x run the following to turn off Wireless...
 		echo "Turning off the Wireless for OS $OS..."
-		/usr/sbin/networksetup -setairportpower off
+		/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Support/networksetup -setairportpower off
 		exit 0
 		
-	elif [[ "$OS" == "10.6" ]]; then
-	
-		# If OS is 10.6.x run the following to turn off Wireless...
-		echo "Turning off the Wireless for OS $OS..."
-		/usr/sbin/networksetup -setairportpower "$checkWireless" off
-		exit 0
-	
-	elif [[ "$OS" == "10.7" ]]; then
-	
-		# If OS is 10.7.x run the following to turn off Wireless...
-		checkWireless=$(networksetup -listallhardwareports | egrep "Hardware Port: (Air|Wi-)" | cut -c 16-)
-		# First we need to get the Wi-Fi device's name
-		wifiDevice=`/usr/sbin/networksetup -listallhardwareports | awk '/^Hardware Port: Wi-Fi/,/^Ethernet Address/' | head -2 | tail -1 | cut -c 9-`
-		echo "Turning off the Wireless for OS $OS..."
-		/usr/sbin/networksetup -setairportpower "$wifiDevice" off
-		exit 0
+		elif [[ "$OS" == "10.5" ]]; then
+		
+			# If OS is 10.5.x run the following to turn off Wireless...
+			echo "Turning off the Wireless for OS $OS..."
+			/usr/sbin/networksetup -setairportpower off
+			exit 0
+			
+		elif [[ "$OS" == "10.6" ]]; then
+		
+			# If OS is 10.6.x run the following to turn off Wireless...
+			echo "Turning off the Wireless for OS $OS..."
+			/usr/sbin/networksetup -setairportpower "$checkWireless" off
+			exit 0
+		
+		elif [[ "$OS" == "10.7" ]]; then
+		
+			# If OS is 10.7.x run the following to turn off Wireless...
+			checkWireless=$(networksetup -listallhardwareports | egrep "Hardware Port: (Air|Wi-)" | cut -c 16-)
+			# First we need to get the Wi-Fi device's name
+			wifiDevice=`/usr/sbin/networksetup -listallhardwareports | awk '/^Hardware Port: Wi-Fi/,/^Ethernet Address/' | head -2 | tail -1 | cut -c 9-`
+			echo "Turning off the Wireless for OS $OS..."
+			/usr/sbin/networksetup -setairportpower "$wifiDevice" off
+			exit 0
+		fi
 	fi
-fi
-
 fi
