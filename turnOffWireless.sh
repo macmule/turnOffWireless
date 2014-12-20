@@ -1,11 +1,11 @@
 #!/bin/sh
 ####################################################################################################
 #
-# More information: http://macmule.com/2011/09/09/how-to-turn-off-wireless-card/ ‎
+# More information: https://macmule.com/2011/09/09/how-to-turn-off-wireless-card/ ‎
 #
 # GitRepo: https://github.com/macmule/turnOffWireless
 #
-# License: http://macmule.com/license/
+# License: https://macmule.com/license/
 #
 ####################################################################################################
 #
