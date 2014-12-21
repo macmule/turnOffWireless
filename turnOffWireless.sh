@@ -1,9 +1,9 @@
 #!/bin/sh
 ####################################################################################################
 #
-# More information: https://macmule.com/2011/09/09/how-to-turn-off-wireless-card/ ‎
+# More information: https://macmule.com/2011/09/09/how-to-turn-off-wireless-card/
 #
-# GitRepo: https://github.com/macmule/turnOffWireless
+# GitRepo: https://github.com/macmule/turnOffWireless/
 #
 # License: https://macmule.com/license/
 #
@@ -107,7 +107,7 @@ else
 	#Checks to see if Wireless is on
 	echo "Wireless is powered on..."
 	
-	# If machine is running 10.4, clear search domains if specified for $clearTiger variable
+	# If machine is running Tiger, clear search domains if specified for $clearTiger variable
 	if [[ "$OS" &lt; "10.5" ]]; then
 		if [[ "$clearTiger" == "y" ]]; then
 			
