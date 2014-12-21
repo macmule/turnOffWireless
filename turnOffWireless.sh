@@ -16,7 +16,7 @@
 ####################################################################################################
 
 # HARDCODED VALUES SET HERE
-# Set to y to clear DNS for 10.4 macs
+# Set to y to clear DNS for macs running Tiger
 clearTiger="n"
 
 # CHECK TO SEE IF A VALUE WAS PASSED IN PARAMETER 4 AND, IF SO, ASSIGN
